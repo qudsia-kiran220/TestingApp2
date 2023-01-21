@@ -1,0 +1,124 @@
+﻿@using TestingApp2.ViewModels.Project
+@using System.Text.Json;
+@using System.Text.Json.Serialization;
+
+@model ProjectIndexViewModel
+
+@{
+    ViewData["Title"] = "Project List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Project List</h1>
+
+</div>
+
+<div class="mb-2">    
+    
+<button onclick="AddItem()" class="btn btn-primary btn-sm">
+    <i class="fa fa-plus me-2"></i>Add item
+ </button>
+</div>
+
+
+
+<div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Project Id</th>
+                <th>Project Name </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Items)
+            {
+
+                <tr>
+                    <td>@item.Id</td>
+
+                    <td>@item.ProjectId</td>
+                    <td>@item.ProjectName</td>
+                  
+                    <td>
+
+
+                        <button id="btnEditRow_@item.Id" type="button" class="btn btn-sm btn-secondary" data-itemid=@item.Id onclick="EditItem(@item.Id);">
+                            <i class="fa fa-pencil fa-fw"></i>
+                            Edit
+                        </button>
+
+                    </td>
+
+
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
+
+<div id="divDialogholder">
+
+</div>
+
+<script type="text/javascript">
+
+    var data = @Html.Raw(@JsonSerializer.Serialize(Model.Items[0]));
+
+    function EditItem(ItemId) {
+
+        var url = '@Url.Action("GetProjectForm", "Project")';
+
+        var url2 = url + "/" + ItemId;
+        
+        $('#divDialogholder').load(url2, function (responseTxt, statusTxt, xhr) {
+
+            if (statusTxt == "success") {
+                               
+
+               var modal = new bootstrap.Modal('#createPopup', {'focus':true})
+               modal.show();
+               
+
+                RefreshDetailsPage = false;
+            }
+            if (statusTxt == "error") {
+                alert("Error: " + xhr.status + ": " + xhr.statusText);
+            }
+        });
+    }
+
+    function AddItem() {
+
+        var url = '@Url.Action("GetProjectForm", "Project")';
+
+        var url2 = url + "/0";
+
+        $('#divDialogholder').load(url2, function (responseTxt, statusTxt, xhr) {
+
+            if (statusTxt == "success") {
+
+
+                var modal = new bootstrap.Modal('#createPopup', { 'focus': true })
+                modal.show();
+
+
+                RefreshDetailsPage = false;
+            }
+            if (statusTxt == "error") {
+                alert("Error: " + xhr.status + ": " + xhr.statusText);
+            }
+        });
+
+
+    }
+
+</script>

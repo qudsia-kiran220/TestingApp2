@@ -1,0 +1,175 @@
+﻿@using TestingApp2.Models
+@using System.Text.Json;
+
+@using System.Text.Json.Serialization;
+
+@model Project
+
+@{
+    
+    Layout = null;
+  
+}
+
+
+<div class="modal fade" id="createPopup" tabindex="-1" role="dialog" aria-labelledby="modalHeader" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div id="div_modal_content" class="modal-content">
+            <div class="modal-header border-dark">
+                <h5 class="modal-title" id="modalHeader">Project Details</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="fa fa-window-close"></i>
+                </button>
+            </div>
+
+            <div id="divRivet" class="modal-body">
+
+                <div>
+                    <form method="post" asp-action="Add" asp-controller="Project">
+                    
+
+                      
+
+                        <div class="form-group mb-2 row">
+                            <label for="project_id" class="col-3">Project Id</label>
+                            <div class="col-9">
+                                <input type="text" id="project_id" name="project_id" value="@Model.ProjectId" placeholder="project id" class="form-control form-control-sm" />
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group mb-2 row">
+                            <label for="project_name" class="col-3">Project Name</label>
+                            <div class="col-9">
+                                <input type="text" id="project_name" name="project_name" value="@Model.ProjectName" />
+                            </div>
+                        </div>
+
+                   
+
+                   
+                     
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="modal-footer border-dark noprint">
+                <button id='closeModal' type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="btnSaveItem" class="btn btn-primary" onclick="SaveItem();">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+    var data = { "Id": 0, "ProjectId": 0, "ProjectName": "Project" };
+
+    data=@Html.Raw(@JsonSerializer.Serialize(Model));
+
+    async function SaveItem() {
+
+        //document.getElementById("module_id").value
+
+      
+       
+        data.ProjectId = $("#project_id").val();
+
+        data.ProjectName = $("#project_name").val();
+
+
+        await UseFetchAPi(data);
+
+    }
+
+    async function UseFetchAPi(data) {
+        console.log('using fetch-api method');
+
+        var addUrl = '@Url.Action("Add", "Project")';
+
+        var updateUrl = '@Url.Action("Update", "Project")';
+
+        let finalUrl=addUrl;
+
+        if(data.Id>0)
+        {
+            finalUrl = updateUrl;
+        }
+
+        //convert javascript object to json string
+         
+
+        //Use [httppost] and [frombody] attributes then it will work
+        let bodyData = JSON.stringify(data);
+
+        //"application/x-www-form-urlencoded; charset=UTF-8",
+
+        const fetchOptions = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: bodyData,
+        };
+ 
+        const response = await fetch(finalUrl, fetchOptions);
+
+        if (!response.ok) {
+
+            const errorMessage = await response.text();
+            alert(errorMessage);
+            return;
+        }
+
+        const responseData = await response.json();
+
+        alert(responseData.message);
+
+
+    }
+
+
+
+    //It is not being used
+    //function UseJquery(data) {
+    //    console.log('using jquery method');
+    //    //Action,Controller
+    //    var addUrl = '@Url.Action("Add", "Project")';
+
+    //    data.WorkItem1 = data.WorkItem1 + " jquery";
+
+    //    $.ajax({
+    //        url: addUrl,
+    //        cache: false,
+    //        type: "POST",
+    //        data: data,
+    //        datatype: 'json', //response data type
+    //        ContentType: 'application/json;utf-8',//request data type browser to server  "application/x-www-form-urlencoded"
+    //        success: function (result, status, xhr) {
+
+    //            debugger;
+    //            if (result.is_ok == true) {
+    //                alert(result.message);
+    //            }
+    //        },
+    //        error: function (xhr, status, error) {
+
+    //            debugger;
+    //            alert('error occured ');
+    //        }
+    //    });
+
+    //}
+
+
+
+</script>
+
