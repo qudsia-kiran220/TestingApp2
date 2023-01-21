@@ -54,6 +54,7 @@ namespace TestingApp.Controllers
         }
 
         [HttpPost("Add")]
+        [Route("[controller]/Add")]
         public IActionResult Add([FromBody] Project Item)
         {
             //Item=this.HttpContext.Request.ReadFromJsonAsync<DAL.WorkItem>().Result;
@@ -75,7 +76,8 @@ namespace TestingApp.Controllers
         }
 
 
-        [HttpPost("Update")]
+        [HttpPut("Update")]
+        [Route("[controller]/Update")]
         public IActionResult Update([FromBody] Project Item)
         {
             //Item=this.HttpContext.Request.ReadFromJsonAsync<DAL.WorkItem>().Result;

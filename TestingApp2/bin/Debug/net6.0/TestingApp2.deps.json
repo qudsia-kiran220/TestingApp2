@@ -8,9 +8,13 @@
     ".NETCoreApp,Version=v6.0": {
       "TestingApp2/1.0.0": {
         "dependencies": {
+          "Font": "0.3.0.3",
+          "Font.Awesome": "5.15.4",
+          "FontAwesome": "4.7.0",
           "Microsoft.EntityFrameworkCore": "7.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.2",
-          "Microsoft.EntityFrameworkCore.Tools": "7.0.2"
+          "Microsoft.EntityFrameworkCore.Tools": "7.0.2",
+          "bootstrap": "5.2.3"
         },
         "runtime": {
           "TestingApp2.dll": {}
@@ -50,6 +54,31 @@
           }
         }
       },
+      "Bezier/0.9.3.5": {
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Geometry.dll": {
+            "assemblyVersion": "0.9.3.5",
+            "fileVersion": "0.9.3.5"
+          }
+        }
+      },
+      "bootstrap/5.2.3": {},
+      "Font/0.3.0.3": {
+        "dependencies": {
+          "Bezier": "0.9.3.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Geometry.Text.dll": {
+            "assemblyVersion": "0.3.0.3",
+            "fileVersion": "0.3.0.3"
+          }
+        }
+      },
+      "Font.Awesome/5.15.4": {},
+      "FontAwesome/4.7.0": {},
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
@@ -720,6 +749,41 @@
       "sha512": "sha512-EycyMsb6rD2PK9P0SyibFfEhvWWttdrYhyPF4f41uzdB/44yQlV+2Wehxyg489Rj6gbPvSPgbKq0xsHJBhipZA==",
       "path": "azure.identity/1.6.0",
       "hashPath": "azure.identity.1.6.0.nupkg.sha512"
+    },
+    "Bezier/0.9.3.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F4wXbn9kFPME+pLK5AvteSkMKeuDxpIjoSYglIqkaQr7VUsp2hyfm8bnXQ2EmJ2fsmx2y8W1iFFYRi9adi0JgQ==",
+      "path": "bezier/0.9.3.5",
+      "hashPath": "bezier.0.9.3.5.nupkg.sha512"
+    },
+    "bootstrap/5.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tZZrH4HdqBr/oeUlGoc2KliYlwXeN3qyhKgc1B5dc585+lnMkcD4A5yIX2NmNoXCCagQQiQGKn7A97sWoo2AOw==",
+      "path": "bootstrap/5.2.3",
+      "hashPath": "bootstrap.5.2.3.nupkg.sha512"
+    },
+    "Font/0.3.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sCK71k/t9zCk9vMeQgElcMWzdRrcY60ek+RQpIIT/g6bJMksYbTbSPtJ6JDAkV0n/VtcnJolUOrCi8zqaNFoBg==",
+      "path": "font/0.3.0.3",
+      "hashPath": "font.0.3.0.3.nupkg.sha512"
+    },
+    "Font.Awesome/5.15.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Okg91rA7RWbd+eKyBNNnvlvzFee7A4yIi0WdTrJMVPos1ntONAVn/m96Ex9qvVXKKiroBZ1vtCXtpFMnHNof1g==",
+      "path": "font.awesome/5.15.4",
+      "hashPath": "font.awesome.5.15.4.nupkg.sha512"
+    },
+    "FontAwesome/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n4H/brfszElyoZ4kmGh8E75uqvLzLvFr3h2PFVdPH1LwUmWIpeqdaW2pcC4oZAhg7sESyObh0IZpAI8COCNeUg==",
+      "path": "fontawesome/4.7.0",
+      "hashPath": "fontawesome.4.7.0.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",

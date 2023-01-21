@@ -85,3 +85,5 @@ E:\c-Sharp\Repo\TestingApp2\TestingApp2\obj\Debug\net6.0\refint\TestingApp2.dll
 E:\c-Sharp\Repo\TestingApp2\TestingApp2\obj\Debug\net6.0\TestingApp2.pdb
 E:\c-Sharp\Repo\TestingApp2\TestingApp2\obj\Debug\net6.0\TestingApp2.genruntimeconfig.cache
 E:\c-Sharp\Repo\TestingApp2\TestingApp2\obj\Debug\net6.0\ref\TestingApp2.dll
+E:\c-Sharp\Repo\TestingApp2\TestingApp2\bin\Debug\net6.0\System.Geometry.dll
+E:\c-Sharp\Repo\TestingApp2\TestingApp2\bin\Debug\net6.0\System.Geometry.Text.dll

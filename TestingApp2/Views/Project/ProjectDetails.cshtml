@@ -26,9 +26,16 @@
 
                 <div>
                     <form method="post" asp-action="Add" asp-controller="Project">
-                    
 
-                      
+
+
+                        <div class="form-group mb-2 row">
+                            <label for="id" class="col-3">Id</label>
+                            <div class="col-9">
+                                <input type="text" id="id" name="id" value="@Model.Id" placeholder="id" class="form-control form-control-sm" />
+
+                            </div>
+                        </div>
 
                         <div class="form-group mb-2 row">
                             <label for="project_id" class="col-3">Project Id</label>
@@ -79,7 +86,7 @@
         //document.getElementById("module_id").value
 
       
-       
+        data.Id = $("#id").val();
         data.ProjectId = $("#project_id").val();
 
         data.ProjectName = $("#project_name").val();
